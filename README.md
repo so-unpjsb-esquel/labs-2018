@@ -1,2 +1,2 @@
-# labs-2018
-Laboratorios Cursada Sistemas Operativos 2018
+# Laboratorios 2018
+Laboratorios Sistemas Operativos 2018.
