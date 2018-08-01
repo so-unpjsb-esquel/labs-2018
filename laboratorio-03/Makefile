@@ -1,6 +1,6 @@
 CC=gcc
 BIN=./bin
-CFLAGS=-Wall -g
+CFLAGS=-Wall -g -lpthread
 
 PROG=ej1 ej2 ej3 ej4 sh fork_vs_thread
 
