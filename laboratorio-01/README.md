@@ -33,7 +33,7 @@ El objetivo de este primer Laboratorio es familiarizarse con las herramientas de
 Para compilar los ejercicios, vamos a emplear el programa `make`, que nos permite automatizar el proceso de compilación y evita que tengamos que escribir el comando completo del compilador. Por ejemplo, en el ejercicio 1 se pide modificar el programa `ej1.c`. Luego, para compilarlo hay que ejecutar:
 ```
 $ make ej1
-gcc ...
+gcc -o bin/ej1 ej1.c -Wall -Werror -g
 $
 ```
 Lo que hace `make` es buscar, en el directorio actual, un archivo de nombre `Makefile`, que contiene las reglas para el objetivo `ej1`, que es compilar el programa `ej1.c`. El binario ejecutable es puesto en el subdirectorio `bin`. Para ejecutarlo:
@@ -45,13 +45,19 @@ $
 Para compilar _todos_ los programas en el Laboratorio, se puede ejecutar `make` sin argumentos (o con el objetivo `all`):
 ```
 $ make
-...
+gcc -o bin/ej1 ej1.c -Wall -Werror -g
+gcc -o bin/ej2-4 ej2-4.c -Wall -Werror -g
+gcc -o bin/ej2-8 ej2-8.c -Wall -Werror -g
+gcc -o bin/ej2-12 ej2-12.c -Wall -Werror -g
+gcc -o bin/ej2-13 ej2-13.c -Wall -Werror -g
+gcc -o bin/ej3-26 ej3-26.c -Wall -Werror -g
+gcc -o bin/ej3-53 ej3-53.c -Wall -Werror -g
 $
 ```
 `make` es lo suficientemente inteligente para no volver a compilar un programa si el código fuente del mismo no fue modificado. Por lo tanto, si se ejecutará nuevamente `make` nos indicaría que no hay nada para hacer.
 ```
 $ make
-$ make ej1
+make: No se hace nada para 'all'.
 $
 ```
 
@@ -60,7 +66,7 @@ $
 git commit -a
 ```
 ```
-git pull origin master
+git push origin master
 ```
 
 ## Ejercicio 1
