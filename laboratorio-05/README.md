@@ -16,7 +16,7 @@ El programa `buf.c` implementa un ejemplo del problema del productor-consumidor,
 ## Ejercicio 4
 El programa `philo.c` implementa un ejemplo del problema de la _cena de los filósofos_. Durante la ejecución del programa puede ocurrir una condición de carrera. 
 1. Modificar el programa para evitar esta condición, mediante el uso de semáforos y mutexes.
-2. El programa incorpora una solución para evitar el bloqueo muturo. Explicarla.
+2. El programa incorpora una solución para evitar el _bloqueo mutuo_ o _abrazo mortal_. Explicarla.
 
 ## Ejercicio 5
 Modificado de: https://pdos.csail.mit.edu/6.828/2017/homework/lock.html
