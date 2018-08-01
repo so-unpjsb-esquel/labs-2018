@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="laboratorio-6---mensajes-y-memoria-compartida">Laboratorio 6 - Mensajes y Memoria Compartida</h1>
+<h2 id="ejercicio-1">Ejercicio 1</h2>
+<p>En este ejercicio usaremos el API de cola de mensajes de POSIX, que permite intercambiar datos entre procesos mediante mensajes. El manual <a href="http://man7.org/linux/man-pages/man7/mq_overview.7.html"><code>mq_overview</code></a> presenta una introducción general al API de colas de mensajes.</p>
+<p>Las funciones del API que vamos a usar en este ejercicio son:</p>
+<ul>
+<li><a href="http://man7.org/linux/man-pages/man3/mq_open.3.html"><code>mq_open()</code></a>: crea una nueva cola de mensajes, o abre una ya existente.</li>
+<li><a href="http://man7.org/linux/man-pages/man3/mq_send.3.html"><code>mq_send()</code></a>: envía un mensaje a la cola de mensajes, con una prioridad dada.</li>
+<li><a href="http://man7.org/linux/man-pages/man3/mq_send.3.html"><code>mq_receive()</code></a>: recibe un mensaje.</li>
+<li><a href="http://man7.org/linux/man-pages/man3/mq_close.3.html"><code>mq_close()</code></a>: cierra el descriptor de una cola de mensajes (se trata como si fuera un descriptor de archivo).</li>
+<li><a href="http://man7.org/linux/man-pages/man3/mq_unlink.3.html"><code>mq_unlink()</code></a>: elimina una cola de mensajes.</li>
+<li><a href="http://man7.org/linux/man-pages/man3/mq_getattr.3.html"><code>mq_getattr()</code></a>: recupera los atributos de la cola de mensajes especificada.</li>
+</ul>
+<p>Deberán completar los siguientes programas, que permiten enviar y recibir mensajes por medio de una cola de mensajes:</p>
+<ul>
+<li><code>mq_open.c</code>: crea una cola de mensajes.</li>
+<li><code>mq_send.c</code>: envia un mensaje a travez de la cola de mensajes especificada.</li>
+<li><code>mq_receive.c</code>: lee el mensaje de mayor prioridad en la cola de mensajes indicada.</li>
+<li><code>mq_attr.c</code>: muestra información acerca de la cola de mensajes especificada.</li>
+<li><code>mq_unlink.c</code>: elimina la cola de mensajes indicada.</li>
+</ul>
+<p>Una vez completados, deben poder crear colas de mensajes y envíar y recibir mensajes por medio de las mismas.</p>
+<p>Responder también las siguientes preguntas:</p>
+<ol>
+<li>Ejecutar el programa <code>mq_receive</code> cuando la cola de mensajes está vacía, ¿Qué sucede? ¿Por qué?</li>
+<li>Enviar varios mensajes, algunos con distinta prioridad y otros con la misma prioridad, usando el programa <code>mq_send</code>. Luego, recuperarlos con <code>mq_receive</code>. ¿En qué orden son recuperados de la cola de mensajes? ¿Cómo se ordenan los mensajes con la misma prioridad?</li>
+</ol>
+<h2 id="ejercicio-2">Ejercicio 2</h2>
+<p>En este ejercicio usaremos el API de POSIX para crear y utilzar segmentos de memoria compartida. Mediante estos segmentos, múltiples procesos pueden intercambiar datos de una manera mucho más rapida que mediante el intercambio de mensajes. El manual <a href="http://man7.org/linux/man-pages/man7/shm_overview.7.html"><code>shm_overview</code></a> tiene una introducción al API de memoria compartida de POSIX.</p>
+<p>Las principales funciones que vamos a usar en el ejercicio son:</p>
+<ul>
+<li><a href="http://man7.org/linux/man-pages/man3/shm_open.3.html"><code>shm_open()</code></a>: crea un nuevo objeto de memoria compartida, o abre uno ya existente.</li>
+<li><a href="http://man7.org/linux/man-pages/man2/ftruncate.2.html"><code>ftruncate()</code></a>: cambia (&quot;trunca&quot;) el tamaño del segmento de memoria compartida (es la misma función que cambia el tamaño de un archivo).</li>
+<li><a href="http://man7.org/linux/man-pages/man2/mmap.2.html"><code>mmap()</code></a>: realiza el mapeo del segmento de memoria compartida indicado dentro del espacio de direcciones del proceso.</li>
+<li><a href="http://man7.org/linux/man-pages/man3/shm_unlink.3.html"><code>shm_unlink()</code></a>: elimina el segmento de memoria compartida indicado.</li>
+<li><a href="http://man7.org/linux/man-pages/man2/close.2.html"><code>close()</code></a>: cierra el descriptor de un segmento de memoria compartida.</li>
+</ul>
+<p>Deben completar los siguientes programas haciendo uso del API de memoria compartida de POSIX, que utilizan memoria compartida para escribir y leer una serie de datos:</p>
+<ul>
+<li><code>shm_create.c</code>: crea un segmento de memoria compartida.</li>
+<li><code>shm_write.c</code>: escribe una serie de datos en el segmento de memoria compartida indicado.</li>
+<li><code>shm_read.c</code>: lee los datos que se encuentren el segmento de memoria compartida especificado.</li>
+<li><code>shm_unlink.c</code>: elimina el segmento de memoria compartida.</li>
+</ul>
+<p>Responder también la siguiente pregunta:</p>
+<ol>
+<li>¿Cómo sabe <code>shm_read</code> cuanto datos puede leer del segmento de memoria compartida?</li>
+</ol>
+<h2 id="ejercicio-3">Ejercicio 3</h2>
+<p>El programa <code>ej3.c</code> crea dos procesos hijos que se comunican por medio de una tubería. Uno de los procesos lee una línea desde la <em>entrada estándar</em>, y la envía por la tubería. El segundo proceso lee esta línea de la tubería y la imprime por la <em>salida estándar</em>. El programa termina cuando se ingresa una linea en blanco (osea, un <code>\n</code>).</p>
+<p>Modificar el programa de manera que ambos procesos se comuniquen con una cola de mensajes, en lugar de una tubería.</p>
+<h2 id="ejercicio-4">Ejercicio 4</h2>
+<p>El programa <code>ej4.c</code> es identico al programa del ejercicio anterior. Modificarlo para que ambos procesos se comuniquen utilizando un segmento de memoria compartida en lugar de una tubería. Se requerirá sincronizar el acceso a la memoria compartida, por ejemplo utilizando un <em>mutex</em>.</p>
+<hr />
+<p>¡Fin del Laboratorio 6!</p>
+</body>
+</html>

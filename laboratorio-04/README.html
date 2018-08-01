@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="laboratorio-4-planificación">Laboratorio 4: Planificación</h1>
+<h2 id="ejercicio-1">Ejercicio 1</h2>
+<p>Completar el programa <code>ej1.c</code>, que crea <em>n</em> hilos, cada uno de los cuales imprime un mensaje un determinado número de veces por la salida estándar.</p>
+<ul>
+<li>Ejecutar el programa múltiples veces con los mismos parámetros, ¿Varía el orden de ejecución de los hilos? ¿Por qué?</li>
+</ul>
+<h2 id="ejercicio-2">Ejercicio 2</h2>
+<p>Consultar la sección <a href="http://man7.org/linux/man-pages/man7/sched.7.html"><code>sched</code></a> del manual y realizar una breve descripción de las políticas <code>SCHED_FIFO</code>, <code>SCHED_RR</code> y <code>SCHED_OTHER</code>.</p>
+<h2 id="ejercicio-3">Ejercicio 3</h2>
+<p>El programa <code>ej3.c</code> crea un cierto número de hilos, y los planifica con la política <code>SCHED_FIFO</code> o <code>SCHED_OTHER</code>, según se le indique. Ejecutar el programa y describir los resultados de planificación de ambas políticas.</p>
+<h2 id="ejercicio-4-cambio-de-contexto-en-xv6">Ejercicio 4: cambio de contexto en <em>xv6</em></h2>
+<p>Agregar un par de invocaciones a <code>cprintf()</code> en el archivo <code>proc.c</code>, antes y despues de las llamadas a la función <code>swtch()</code>. Primero, en la funcion <code>scheduler()</code>, de esta forma:</p>
+<pre><code>cprintf(&quot;a&quot;);
+swtch(&amp;(c-&gt;scheduler), p-&gt;context);
+cprintf(&quot;b&quot;);
+</code></pre>
+<p>Luego, en la función <code>sched()</code>, de la siguiente manera:</p>
+<pre><code>cprintf(&quot;c&quot;);
+swtch(&amp;p-&gt;context, mycpu()-&gt;scheduler);
+cprintf(&quot;d&quot;);
+</code></pre>
+<p>Luego, compilar y ejecutar <em>xv6</em>. Responder:</p>
+<ul>
+<li>¿Como es el patron de cuatro caracteres que aparece? ¿Por qué se da en ese orden?</li>
+<li>Sin embargo, los primeros caracteres que aparecen son <code>ac</code>, ¿Por qué?</li>
+</ul>
+<h2 id="ejercicio-5">Ejercicio 5</h2>
+<p>Resolver los ejercicios sobre algoritmos de planificación.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Proceso</th>
+<th>Ráfaga</th>
+<th>Prioridad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P1</td>
+<td>9</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>P2</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>P3</td>
+<td>5</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>P4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>P5</td>
+<td>10</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>Proceso</th>
+<th>Ráfaga</th>
+<th>Prioridad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P1</td>
+<td>9</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>P2</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>P3</td>
+<td>5</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>P4</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>P5</td>
+<td>10</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>¡Fin del Laboratorio 4!</p>
+</body>
+</html>

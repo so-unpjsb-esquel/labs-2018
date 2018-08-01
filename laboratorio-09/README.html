@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="laboratorio-9---sistema-de-archivos">Laboratorio 9 - Sistema de Archivos</h1>
+<h2 id="ejercicio-1-incrementar-el-tamaño-máximo-de-un-archivo-en-xv6">Ejercicio 1: Incrementar el tamaño máximo de un archivo en <em>xv6</em></h2>
+<p>Con <code>BSIZE = 512</code>, <em>xv6</em> está limitado a un máximo de 140 sectores, osea 71680 bytes. Este límite proviene del hecho que un <em>i-nodo</em> en <em>xv6</em> contiene 12 bloques de acceso directo, más un bloque de indirección sencilla (128 bloques adicionales). Luego, el máximo número de sectores en disco que puede ocupar un archivo es 12 + 128 = 140 sectores.</p>
+<p>En este ejercicio se incrementará el tamaño máximo de un archivo en <em>xv6</em>, agregando soporte en la estructura de <em>i-nodo</em> para un bloque de indirección doble.</p>
+<h3 id="preliminares">Preliminares</h3>
+<ol>
+<li>En el archivo <code>Makefile</code> de <em>xv6</em> indicar que simule un solo CPU (<code>CPU := 1</code>), y agregar la opción -snapshot en la definición de <code>QEMUOPTS</code>. Estos cambios mejoran la performance de xv6 al generar archivos grandes, y utilizar solo una CPU facilita la evaluación.</li>
+<li>Modificar <code>FSSIZE</code> en el archivo <code>defs.h</code> para que sea igual a 262144 sectores. Esto incrementa el tamaño de la imagen de disco a 128 Mb (262144 * 512 bytes).</li>
+<li>Copiar el archivo <code>big.c</code> en el directorio de <em>xv6</em>, y agregarlo a la lista <code>UPROGS</code> en el <code>Makefile</code>. Este programa al ejecutarse crea un nuevo archivo, con un tamaño tal que ocupe un número determinado de sectores en el disco.</li>
+<li>Compilar y ejecutar <em>xv6</em>. Luego, ejecutar el comando <code>big</code> con 200 sectores como parámetro. Debe retornar que sólo 140 sectores fueron escritos, ya que es el máximo tamaño posible del archivo.</li>
+</ol>
+<h3 id="qué-tener-en-cuenta">Qué tener en cuenta</h3>
+<p>El formato de un <em>i-nodo</em> en disco es establecido por la estructura <code>struct dinode</code>, definida en el archivo <code>fs.h</code>. Prestar atención a <code>NDIRECT</code>, <code>NINDIRECT</code>, <code>MAXFILE</code> y el arreglo <code>addrs[]</code>.</p>
+<p>La función <code>bmap()</code>, en el archivo <code>fs.c</code>, permite recuperar los datos de una archivo en el disco. Esta función es invocada tanto en la lectura como la escritura de un archivo. Para este último caso, <code>bmap()</code> reserva nuevos bloques según sea necesario.</p>
+<p>Notar que <code>bmap()</code> maneja dos tipos de números de bloques. El argumento <code>bn</code> indica un número lógico de bloque, que es relativo al inicio del archivo. Sin embargo, los números de sectores almacenados en el arreglo <code>addrs[]</code> del <em>i-nodo</em> corresponden con números de sectores en el disco, que pueden no ser consecutivos.</p>
+<h3 id="modificaciones-a-realizar">Modificaciones a realizar</h3>
+<p>Modificar <code>bmap()</code> para que implemente el bloque de indirección doble, además del bloque de indirección sencilla y los bloques directos.</p>
+<p>No se debe modificar el tamaño del <em>i-nodo</em>, si no que, en cambio, se debe alterar para que tenga 11 bloques directos (en lugar de 12). De esta manera, el elemento 10 del arreglo <code>addrs[]</code> será el bloque indirecto sencillo, y el último elemento del arreglo será la dirección del nuevo bloque de indirección doble.</p>
+<p>Se de modificar también, en el archivo <code>mkfs.c</code>, la función <code>iappend()</code> de manera similar. Este programa genera la imagen de disco inicial para la máquina virtual (archivo <code>fs.img</code>), y crea los <em>i-nodos</em> de los programas en disco.</p>
+<h3 id="tips">Tips:</h3>
+<ul>
+<li>Liberar cada bloque luego de utilizarlo, utilizando la función <code>brelse()</code>.</li>
+<li>Sólo se deben reservar nuevos sectores en disco a medida que sean necesarios.</li>
+<li>Si el sistema de archivos se corrompe, eliminar el archivo <code>fs.img</code>.</li>
+</ul>
+<hr />
+<p>¡Fín del Laboratorio 9!</p>
+</body>
+</html>
