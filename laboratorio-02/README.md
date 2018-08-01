@@ -50,9 +50,11 @@ Ejecutar el comando `echo hola`, y explicar brevemente para qué se invocan cada
 _Opcional_: imprimir también los argumentos pasados a la llamada al sistema.
 
 ## Ejercicio 4
-Este ejercicio consiste en agregar una nueva llamada al sistema a _xv6_. Esta llamada al sistema debe retornar al usuario la fecha UTC actual del sistema. Para facilitar la implementación, copiar el código de una llamada al sistema ya existente, como por ejemplo `uptime()`, y usarlo como base.
+Este ejercicio vamos a modificar nuevamente el _kernel_ de a _xv6_, para agregar una nueva llamada al sistema operativo que retorne al usuario la fecha UTC actual del sistema.
 
-Para leer el reloj del sistema, usar la función auxiliar `cmostime()`, definida en el archivo `lapic.c`. Esta función requiere como parámetro un puntero a una estructura `struct rtcdate`, definida en el archivo `date.h`.
+Para facilitar la implementación, utilizar como base el código fuente de una llamada al sistema ya existente, como por ejemplo `uptime()`.
+
+Para leer el reloj del sistema y obtener la fecha UTC, hay que usar la función auxiliar `cmostime()`, implementada en el archivo `lapic.c`. Esta función requiere como parámetro un puntero a una estructura `struct rtcdate`, definida en el archivo `date.h`.
 
 Para probar la nueva llamada al sistema, usar el archivo `date.c` como base para un programa que invoca la llamada al sistema e imprime por la salida estándar la fecha UTC. Se debe agregar `date.c` a la lista  `UPROGS` del `Makefile` de _xv6_ para que sea compilado como un programa de usuario.
 
