@@ -33,7 +33,7 @@ void *BusyWork(void *t)
         result = result + sin(i) * tan(i);
     }
 
-    ar[(int) t] = pos++;
+    ar[(intptr_t) t] = pos++;
 
     pthread_exit(NULL);
 }
