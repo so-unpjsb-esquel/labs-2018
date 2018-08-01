@@ -27,7 +27,7 @@ now()
  gettimeofday(&tv, 0);
  return tv.tv_sec + tv.tv_usec / 1000000.0;
 }
-
+/*
 static void
 print(void)
 {
@@ -40,7 +40,7 @@ print(void)
     }
     printf("\n");
   }
-}
+}*/
 
 static void 
 insert(int key, int value, struct entry **p, struct entry *n)
