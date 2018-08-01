@@ -31,7 +31,11 @@
 <h2 id="ejercicio-3">Ejercicio 3</h2>
 <p>El programa <code>buf.c</code> implementa un ejemplo del problema del productor-consumidor, haciendo uso de un búfer limitado. El programa no es correcto, ya que no utiliza mecanismos de sincronización. Esto puede ocasionar problemas, por ejemplo una condición de carrera. Modificar el programa para sincronizar el acceso al recurso compartido (el <em>buffer</em>) por parte de los hilos productor y consumidor, empleando semáforos y mutexes.</p>
 <h2 id="ejercicio-4">Ejercicio 4</h2>
-<p>El programa <code>philo.c</code>, implementa un ejemplo del problema de la <em>cena de los filósofos</em>. Durante la ejecución del programa puede ocurrir una condición de carrera y/o de interbloqueo. Modificarlo para evitar esta condición, mediante el uso de semáforos y mutexes.</p>
+<p>El programa <code>philo.c</code> implementa un ejemplo del problema de la <em>cena de los filósofos</em>. Durante la ejecución del programa puede ocurrir una condición de carrera.</p>
+<ol>
+<li>Modificar el programa para evitar esta condición, mediante el uso de semáforos y mutexes.</li>
+<li>El programa incorpora una solución para evitar el bloqueo muturo. Explicarla.</li>
+</ol>
 <h2 id="ejercicio-5">Ejercicio 5</h2>
 <p>Modificado de: <a href="https://pdos.csail.mit.edu/6.828/2017/homework/lock.html" class="uri">https://pdos.csail.mit.edu/6.828/2017/homework/lock.html</a></p>
 <p>En este ejercicio exploraremos la programación paralela, utilizando hilos, exclusión mutua y una tabla <em>hash</em>. Para lograr un paralelismo real, se debe ejecutar este programa en una computadora con dos o más núcleos.</p>
@@ -90,8 +94,8 @@ pthread_mutex_unlock(&amp;lock);  // release lock
 <li>Modificar el código para que las operaciones <em>get</em> puedan ejecutarse en paralelo. (Tip: ¿Es necesario utilizar exclusión mútua al realizar una operación <em>get</em>?)</li>
 <li>Modificar el código para que algunas de las operaciones <em>put</em> puedan ejecutar en paralelo.</li>
 </ol>
-<h2 id="opcional-ejercicio-5">Opcional: Ejercicio 5</h2>
-<p>Un problema clásico de IPC es el problema del peluquero dormido. Una peluquería tiene <em>n</em> peluqueros, y <em>m</em> sillas donde los clientes esperan su turno. Si no hay clientes, los peluqueros duermen (se bloquean). Cuando arriba un cliente, alguno de los peluqueros se despierta, y realiza el corte de pelo. Si todos los peluqueros estuvieran todos ocupados, y hubiera sillas disponibles, el cliente se sienta a esperar su turno (es decir, se bloquea a la espera de su turno). Caso contrario, se retira. Escribir un programa, <code>ej5.c</code>, que represente esta situación. Emplear semáforos para manejar sincronización y mutexes para garantizar la exclusión mutua.</p>
+<h2 id="ejercicio-6-opcional">Ejercicio 6 (Opcional)</h2>
+<p>Un problema clásico de IPC es el problema del peluquero dormido. Una peluquería tiene <em>n</em> peluqueros, y <em>m</em> sillas donde los clientes esperan su turno. Si no hay clientes, los peluqueros duermen (se bloquean). Cuando arriba un cliente, alguno de los peluqueros se despierta, y realiza el corte de pelo. Si todos los peluqueros estuvieran todos ocupados, y hubiera sillas disponibles, el cliente se sienta a esperar su turno (es decir, se bloquea a la espera de su turno). Caso contrario, se retira. Implementar en <code>peluquero.c</code> un ejemplo de este problema. Emplear semáforos para manejar sincronización y mutexes para garantizar la exclusión mutua.</p>
 <hr />
 <p>¡Fin del Laboratorio 5!</p>
 </body>

@@ -14,7 +14,9 @@ Completar los programas `sem_open.c`, `sem_wait.c`, `sem_post.c` y `sem_unlink.c
 El programa `buf.c` implementa un ejemplo del problema del productor-consumidor, haciendo uso de un búfer limitado. El programa no es correcto, ya que no utiliza mecanismos de sincronización. Esto puede ocasionar problemas, por ejemplo una condición de carrera. Modificar el programa para sincronizar el acceso al recurso compartido (el _buffer_) por parte de los hilos productor y consumidor, empleando semáforos y mutexes.
 
 ## Ejercicio 4
-El programa `philo.c`, implementa un ejemplo del problema de la _cena de los filósofos_. Durante la ejecución del programa puede ocurrir una condición de carrera y/o de interbloqueo. Modificarlo para evitar esta condición, mediante el uso de semáforos y mutexes.
+El programa `philo.c` implementa un ejemplo del problema de la _cena de los filósofos_. Durante la ejecución del programa puede ocurrir una condición de carrera. 
+1. Modificar el programa para evitar esta condición, mediante el uso de semáforos y mutexes.
+2. El programa incorpora una solución para evitar el bloqueo muturo. Explicarla.
 
 ## Ejercicio 5
 Modificado de: https://pdos.csail.mit.edu/6.828/2017/homework/lock.html
