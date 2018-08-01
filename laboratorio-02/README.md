@@ -1,8 +1,7 @@
 # Laboratorio 2 - Llamadas al Sistema
 
 ## Ejercicio 1
-Completar el programa `hola.c`, para que imprima el mensaje `hola mundo` en la _salida estándar_. Compilar dos versiones, una utilizando el parámetro `-static` del compilador gcc, que enlaza estáticamente las librerías utilizadas, y otra versión sin utilizar este parámetro. Ejecutar ambos ejecutables utilizando el comando `strace`, para ver que llamadas al sistema utiliza el programa. Responder:
-1. ¿Qué diferencias existen en la ejecución de ambas versiones, según lo que indica el comando `strace`?
+Compilar el programa `hola.c`, que imprime el mensaje `hola mundo` en la _salida estándar_. Ejecutar el ejecutable utilizando el comando `strace`, para ver que llamadas al sistema utiliza el programa. Responder:
 2. Identificar las llamadas al sistema utilizadas por las funciones de biblioteca empleadas en el programa.
 3. ¿Qué llamada al sistema se encarga de imprimir el mensaje en la _salida estándar_?
 

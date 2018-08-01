@@ -44,7 +44,7 @@
 <h3 id="cómo-compilar-los-ejercicios">Cómo compilar los ejercicios</h3>
 <p>Para compilar los ejercicios, vamos a emplear el programa <code>make</code>, que nos permite automatizar el proceso de compilación y evita que tengamos que escribir el comando completo del compilador. Por ejemplo, en el ejercicio 1 se pide modificar el programa <code>ej1.c</code>. Luego, para compilarlo hay que ejecutar:</p>
 <pre><code>$ make ej1
-gcc ...
+gcc -o bin/ej1 ej1.c -Wall -Werror -g
 $
 </code></pre>
 <p>Lo que hace <code>make</code> es buscar, en el directorio actual, un archivo de nombre <code>Makefile</code>, que contiene las reglas para el objetivo <code>ej1</code>, que es compilar el programa <code>ej1.c</code>. El binario ejecutable es puesto en el subdirectorio <code>bin</code>. Para ejecutarlo:</p>
@@ -54,18 +54,24 @@ $
 </code></pre>
 <p>Para compilar <em>todos</em> los programas en el Laboratorio, se puede ejecutar <code>make</code> sin argumentos (o con el objetivo <code>all</code>):</p>
 <pre><code>$ make
-...
+gcc -o bin/ej1 ej1.c -Wall -Werror -g
+gcc -o bin/ej2-4 ej2-4.c -Wall -Werror -g
+gcc -o bin/ej2-8 ej2-8.c -Wall -Werror -g
+gcc -o bin/ej2-12 ej2-12.c -Wall -Werror -g
+gcc -o bin/ej2-13 ej2-13.c -Wall -Werror -g
+gcc -o bin/ej3-26 ej3-26.c -Wall -Werror -g
+gcc -o bin/ej3-53 ej3-53.c -Wall -Werror -g
 $
 </code></pre>
 <p><code>make</code> es lo suficientemente inteligente para no volver a compilar un programa si el código fuente del mismo no fue modificado. Por lo tanto, si se ejecutará nuevamente <code>make</code> nos indicaría que no hay nada para hacer.</p>
 <pre><code>$ make
-$ make ej1
+make: No se hace nada para &#39;all&#39;.
 $
 </code></pre>
 <h3 id="como-subir-los-ejercicios-al-repositorio">Como subir los ejercicios al repositorio</h3>
 <pre><code>git commit -a
 </code></pre>
-<pre><code>git pull origin master
+<pre><code>git push origin master
 </code></pre>
 <h2 id="ejercicio-1">Ejercicio 1</h2>
 <p>Modificar el programa <code>ej1.c</code> para que realize la suma de un número arbitrario de números enteros, que son provistos desde la línea de comandos como argumentos. Por ejemplo:</p>

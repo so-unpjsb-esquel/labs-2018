@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="laboratorio-2---llamadas-al-sistema">Laboratorio 2 - Llamadas al Sistema</h1>
+<h2 id="ejercicio-1">Ejercicio 1</h2>
+<p>Completar el programa <code>hola.c</code>, para que imprima el mensaje <code>hola mundo</code> en la <em>salida estándar</em>. Compilar dos versiones, una utilizando el parámetro <code>-static</code> del compilador gcc, que enlaza estáticamente las librerías utilizadas, y otra versión sin utilizar este parámetro. Ejecutar ambos ejecutables utilizando el comando <code>strace</code>, para ver que llamadas al sistema utiliza el programa. Responder:</p>
+<ol>
+<li>¿Qué diferencias existen en la ejecución de ambas versiones, según lo que indica el comando <code>strace</code>?</li>
+<li>Identificar las llamadas al sistema utilizadas por las funciones de biblioteca empleadas en el programa.</li>
+<li>¿Qué llamada al sistema se encarga de imprimir el mensaje en la <em>salida estándar</em>?</li>
+</ol>
+<p><em>Nota</em>: es posible que el comando <code>strace</code> no este instalado en el sistema. De ser así, utilizar el administrador de paquetes de la distribución para instalarlo. Por ejemplo, en Ubuntu el comando es <code>sudo apt install strace</code>.</p>
+<h2 id="ejercicio-2">Ejercicio 2</h2>
+<p>Completar los programas <code>ej2-reader.c</code> y <code>ej2-writer.c</code>. El programa <code>ej2-reader.c</code> debe leer líneas desde la <em>entrada estándar</em> y enviarlas al programa <code>ej2-writer.c</code> para que este las imprima a través de la <em>salida estándar</em>. La comunicación entre los dos procesos debe realizarse mediante una <em>tubería</em> (<em>pipe</em>), creada con la llamada al sistema <a href="http://man7.org/linux/man-pages/man3/mkfifo.3.html"><code>mkfifo()</code></a> en <code>ej2-reader.c</code>. En el programa <code>ej2-writer.c</code> utilizar la llamada al sistema <a href="http://man7.org/linux/man-pages/man2/open.2.html"><code>open()</code></a> para abrir la tubería. Emplear las llamadas al sistema <a href="http://man7.org/linux/man-pages/man2/read.2.html"><code>read()</code></a>, para leer desde la <em>entrada estandar</em>, y <a href="http://man7.org/linux/man-pages/man2/write.2.html"><code>write()</code></a> para escribir en la <em>salida estándar</em>. El programa <code>ej2-reader.c</code> debe finalizar su ejecución al leer una línea en blanco (esto es, una línea que solo contenga el carácter <code>\n</code>).</p>
+<h2 id="ejercicio-3">Ejercicio 3</h2>
+<p>En este ejercicio, se agregará una traza a <em>xv6</em> que imprima un mensaje cada vez que se invoca una llamada al sistema. Este mensaje tiene que indicar el nombre de la llamada al sistema invocada, y el valor que la misma retorna. Para esto, se debe modificar la función <code>syscall()</code> en el archivo <code>syscall.c</code>. Una vez hecha la modificación, al iniciar <em>xv6</em> se tendría que ver algo similar a:</p>
+<pre><code>xv6...
+cpu1: starting
+cpu0: starting
+sys_fstat -&gt; 0
+sys_write -&gt; -1
+sys_unlink -&gt; 0
+sys_write -&gt; 0
+sys_getpid -&gt; 1
+...
+</code></pre>
+<p><em>Bonus</em>: imprimir también los argumentos pasados a la llamada al sistema.</p>
+<h2 id="ejercicio-4">Ejercicio 4</h2>
+<p>Este ejercicio consiste en agregar una nueva llamada al sistema a <em>xv6</em>. Esta llamada al sistema debe retornar al usuario la fecha UTC actual del sistema. Para facilitar la implementación, copiar el código de una llamada al sistema ya existente, como por ejemplo <code>uptime()</code>, y usarlo como base.</p>
+<p>Para leer el reloj del sistema, usar la función auxiliar <code>cmostime()</code>, definida en el archivo <code>lapic.c</code>. Esta función requiere como parámetro un puntero a una estructura <code>struct rtcdate</code>, definida en el archivo <code>date.h</code>.</p>
+<p>Para probar la nueva llamada al sistema, usar el archivo <code>date.c</code> como base para un programa que invoca la llamada al sistema e imprime por la salida estándar la fecha UTC. Se debe agregar <code>date.c</code> a la lista <code>UPROGS</code> del <code>Makefile</code> de <em>xv6</em> para que sea compilado como un programa de usuario.</p>
+<hr />
+<p>¡Fin del Laboratorio 2!</p>
+</body>
+</html>
