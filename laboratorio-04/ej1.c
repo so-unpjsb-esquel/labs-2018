@@ -65,12 +65,15 @@ int main(int argc, char *argv[])
 void *hilo(void *param)
 {
     int i;
-    int id = (int) param;
+    // intptr_t: Integer type capable of holding a value converted from a 
+    // void pointer and then be converted back to that type with a value 
+    // that compares equal to the original pointer.
+    int id = (intptr_t) param;
 
     for (i = 0; i < count; i++) {
         printf("Hilo %d: Instancia %d\n", id, i);
         sleep(1);
     }
 
-    pthread_exit((void *) i);
+    pthread_exit((void *) (intptr_t) i);
 }
