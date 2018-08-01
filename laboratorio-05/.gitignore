@@ -55,5 +55,10 @@ dkms.conf
 *.c~
 
 # Binarios de los ejercicios
-bin/ej*
+bin/glob
+bin/ph
+bin/philo
+bin/buf
+bin/peluquero
+bin/sem_*
 bin/sh
