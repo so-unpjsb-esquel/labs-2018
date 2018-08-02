@@ -1,17 +1,27 @@
 # Laboratorio 8 - Administración de Memoria
 
 ## Preliminares
-Leer el Capítulo 2 "Page Tables" del apunte de _xv6_.
+Leer el apunte de práctica sobre administración de memoria en _xv6_, y el Capítulo 2 "Page Tables" del libro de _xv6_, para los ejercicios 2 y 3.
 
-## Ejercicio 1: Contador de páginas en _xv6_
+## Ejercicio 1:
+Realizar los ejercicios que se incluyen en el archivo `PracticaMemoria.pdf`.
+
+## Ejercicio 2: Contador de páginas en _xv6_
 Agregar a _xv6_ una llamada al sistema de nombre `pgcnt()` que retorne la cantidad de páginas en uso del proceso actual. El código de la llamada al sistema se encuentra en el archivo `sys_pgcnt.c`. El archivo `pgcnt.c` es un programa de usuario que invoca a esta llamada al sistema.
 
-Modificar la llamada al sistema `pgcnt()`, agregando un parámetro de tipo entero (`int`) que si es cero, hace que la función retorne el número de páginas utilizadas para el espacio de direcciones de usuario, y si es 1 retorna el número de páginas utilizadas por el _kernel_ del sistema operativo.
+Modificar el programa `pgcnt.c` para acepte como argumento un número que indique la cantidad de páginas que tiene que reservar de memoria dinámicante. El programa debe imprimir primero cuantas páginas utiliza antes y despues de reservar más memoria. Por ejemplo, si se ejecuta pidiendo 5 páginas:
+```
+$ pgcnt 5
+6
+11
+$
+```
+_Tip_: pueden usar las funciones `malloc()` o `sbrk()` para incrementar la memoria utilizada por el proceso.
 
 ### Entrega:
-Crear en el repositorio del Laboratorio una copia del archivo `sys_pgcnt.c`, agregando comentarios que expliquen su funcionamiento, y la modificación realizada para contar paginas del usuario o del _kernel_.
+Copiar en el repositorio el archivo `pgcnt.c` modificado, con el código comentado explicando las modificaciones.
 
-## Ejercicio 2: _Lazy allocation_ en _xv6_
+## Ejercicio 3: _Lazy allocation_ en _xv6_
 Muchos programas reservan memoria que pueden no utilizar nunca, como por ejemplo, un arreglo de gran tamaño. Un sistema operativo como Windows o Linux puede retrasar la asignación de memoria a estas secciones hasta que sean requeridos para su lectura/escritura. Cuando un proceso quiere acceder a estas secciones de memoria, ocurre un _page fault_ (fallo de página), y el sistema operativo carga las páginas requeridas desde disco. Una estrategia basada en este comportamiento se denomina _lazy allocation_.
 
 ### Parte 1
