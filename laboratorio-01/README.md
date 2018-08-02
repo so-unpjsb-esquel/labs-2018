@@ -10,19 +10,19 @@ $ sumatoria 1 2 3 5 8
 ```
 
 ## Ejercicio 2
-Realizar los siguientes ejercicios del Capítulo 1 del libro K&R: 
+Repasar el primer capítulo de libro "El Lenguaje de Programación C" (W. Kernighan y D. Ritchie, Prentice Hall) y realizar los siguientes ejercicios del Capítulo 1: 
 - 1.4
 - 1.8
 - 1.12
 - 1.13
 
 ## Ejercicio 3
-Repasar los siguientes capitulos del libro K&R:
-- 2.9 (Bitwise operators).
-- 5.1 (Pointers and Addresses) a 5.5 (Character Pointers and Functions).
-- 6.1 a 6.4 (pointers to structures).
+Repasar los siguientes capitulos del libro "El Lenguaje de Programación C":
+- 2.9 (Operadores para manejo de bits).
+- 5.1 (Apuntadores y direcciones) a 5.5 (Apuntadores a caracteres y funciones).
+- 6.1 (Conceptos básicos sobre estructuras) a 6.4 (Apuntadores a estructuras).
 
-Y realizar los siguientes ejercicios:
+Y realizar los siguientes ejercicios de los Capítulos 2 y 5:
 - 2.6
 - 5.3
 

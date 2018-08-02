@@ -1,4 +1,4 @@
-# Laboratorios SO
+# Laboratorios de Sistemas Operativos
 En este repositorio encontraran los Laboratorios para la cátedra Sistemas Operativos, ciclo lectivo 2018.
 
 ## Software de base
@@ -59,11 +59,27 @@ $
 ```
 
 ## Como subir los ejercicios al repositorio
+Primero deben indicar que archivos modificados desean incluir en el _commit_, usando el comando `git add`. Por ejemplo, si terminaron de realizar el ejercicio 1, y modificaron el archivo `ej1.c`:
 ```
-git commit -a
+git add ej1.c
 ```
+Luego, para realizar el _commit_, ejecutan `git commit`, indicando con el parámetro `-m` una descripción de las modificaciones:
+```
+git commit -m "Ejercicio 1 completo."
+```
+Luego para sincronizar el repositorio remoto en GitHub con el de su computadora, subiendo las modificaciones realizadas, utilizan el comando `git push` de esta manera:
 ```
 git push origin master
 ```
+Es importante remarcar que no necesitan sincronizar (osea, hacer un "push") luego de cada _commit_. Pueden realizar varios _commits_ en su repositorio local, y cuando lo consideren conveniente, "subir" los cambios al repositorio en GitHub. 
+
+Git es un sistema de versionado de código distribuido: tanto el repositorio local como el remoto en GitHub (o en otra computadora cualquiera) son "pares". Por lo tanto, no existe un repositorio central en el sentido estricto de la palabra.
+
+Para los que no estén familiarizados con Git, o deseen realizar un repaso del mismo, pueden seguir este [excelente tutorial](https://try.github.io/levels/1/challenges/1).
 
 ## Sistema Operativo _xv6_
+En varios de los Laboratorios vamos a ver la implementación de varios conceptos de la teoría en el sistema operativo _xv6_. Este sistema fue diseñado para la enseñanza en el MIT, esta escrito en C, tiene soporte para multiprocesadores y su diseño sigue la filosofía y estructura de un sistema operativo de tipo Unix.
+
+Aunque _xv6_ puede ejecutarse sobre una computadora real como un sistema operativo tradicional, en los Laboratorios vamos a utilizar para flexibilidad una máquina virtual por medio del programa QEMU. Este nos va a permitir, por ejemplo, inspeccionar el estado de la memoria, seguir paso a paso la ejecución del _kernel_ de sistema operativo, etc.
+
+Página oficial: https://pdos.csail.mit.edu/6.828/2017/xv6.html
