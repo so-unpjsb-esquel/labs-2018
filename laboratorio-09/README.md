@@ -30,6 +30,9 @@ Se de modificar también, en el archivo `mkfs.c`, la función `iappend()` de man
 - Sólo se deben reservar nuevos sectores en disco a medida que sean necesarios.
 - Si el sistema de archivos se corrompe, eliminar el archivo `fs.img`.
 
+### Entrega
+Agregar al repositorio del Laboratorio una copia del archivo `fs.c` modificado.
+
 ---
 
 ¡Fín del Laboratorio 9!

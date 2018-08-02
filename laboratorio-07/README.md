@@ -26,6 +26,9 @@ Registar la lista de mensajes generados, indicando que función invoco a `bwrite
 
 _Tip_: una manera sencilla de obtener el nombre de la función que invoca a `bwrite()` es agregarlo como un argumento extra a la función `log_write()`, y modificando todas las invocaciones agregando el nombre de la función en cuestión.
 
+### Entrega
+Agregar la respuesta como un archivo de texto en el repositorio del Laboratorio.
+
 ## Ejercicio 2: Pantalla
 El archivo `console.c` implementa la funcionalidad de E/S de la terminal. La entrada se realiza desde el teclado y/o desde el puerto serial (RS232), y la salida es tanto por la pantalla y el puerto serial.
 La función `cgaputc()` escribe el carácter que recibe como parámetro en la memoria de video en modo texto, suponiendo un adaptador CGA. Utiliza los siguientes datos:
@@ -40,10 +43,13 @@ La función `cgaputc()` funciona de la siguiente manera:
 4. Realiza el _scroll_ (desplazamiento) de la pantalla si corresponde.
 5. Actualiza el cursor hardware con la nueva posición.
 
-### Que hacer:
+### Que hacer
 Para este ejercicio se pide:
 - Modificar el archivo `console.c` para cambiar el color con que el que se imprimen los caracteres por pantalla. Probar también cambiar el color de fondo. Ver la página 34 de la sección Alphanumeric Modes en la documentación VGA (que lo hereda de CGA).
 - _Opcional_: Mantener el cursor en dos variables `x` e `y`, de manera que no se requiera recuperar el cursor hardware, y sólo se deba actualizarlo.
+
+### Entrega
+Copiar en el repositorio del Laboratorio el archivo `console.c` modificado, con los comentarios correspondientes que indiquen brevemente las modificaciones realizadas.
 
 ### Referencias:
 - La sección “Terminales” (página 235) del Capítulo 3 (Entrada/Salida) del libro “Sistemas Operativos - Diseño e Implementación” (Tanenbaum).

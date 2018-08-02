@@ -7,9 +7,12 @@ Leer el Capítulo 2 "Page Tables" del apunte de _xv6_.
 Write a user program that grows its address space with 1 byte by calling sbrk(1). Run the program and investigate the page table for the program before the call to sbrk and after the call to sbrk. How much space has the kernel allocated? What does the pte for the new memory contain?
 
 ## Ejercicio 2: Contador de páginas en _xv6_
-Agregar a _xv6_ una llamada al sistema de nombre `pgcnt()` que retorne la cantidad de páginas en uso del proceso actual. El código de la llamada al sistema se encuentra en el archivo `sys_pgcnt_2018.c`. El archivo `pgcnt.c` es un programa de usuario que invoca a esta llamada al sistema.
+Agregar a _xv6_ una llamada al sistema de nombre `pgcnt()` que retorne la cantidad de páginas en uso del proceso actual. El código de la llamada al sistema se encuentra en el archivo `sys_pgcnt.c`. El archivo `pgcnt.c` es un programa de usuario que invoca a esta llamada al sistema.
 
 Modificar la llamada al sistema `pgcnt()`, agregando un parámetro de tipo entero (`int`) que si es cero, hace que la función retorne el número de páginas utilizadas para el espacio de direcciones de usuario, y si es 1 retorna el número de páginas utilizadas por el _kernel_ del sistema operativo.
+
+### Entrega:
+Crear en el repositorio del Laboratorio una copia del archivo `sys_pgcnt.c`, agregando comentarios que expliquen su funcionamiento, y la modificación realizada para contar paginas del usuario o del _kernel_.
 
 ## Ejercicio 3: _Lazy allocation_ en _xv6_
 Muchos programas reservan memoria que pueden no utilizar nunca, como por ejemplo, un arreglo de gran tamaño. Un sistema operativo como Windows o Linux puede retrasar la asignación de memoria a estas secciones hasta que sean requeridos para su lectura/escritura. Cuando un proceso quiere acceder a estas secciones de memoria, ocurre un _page fault_ (fallo de página), y el sistema operativo carga las páginas requeridas desde disco. Una estrategia basada en este comportamiento se denomina _lazy allocation_.
@@ -29,6 +32,9 @@ Modificar el código en el archivo `trap.c`, para que ante un _page fault_, prod
 - Usar código de la función `allocuvm()` en el archivo `vm.c`, que es la función que invoca `growproc()`.
 - Usar `PGROUNDDOWN()` para obtener la dirección base de la página (marco).
 - Será necesario invocar a `mappages()`, por lo que hay que eliminar la sentencia static de su declaración en el archivo `vm.c`, y agregar su prototipo en `trap.c`.
+
+### Entrega
+Copiar en el repositorio del Laboratorio el archivo `trap.c` modificado, y un archivo de texto donde se responda las preguntas de la Parte 1 del Ejercicio.
 
 ---
 
