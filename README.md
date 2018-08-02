@@ -77,6 +77,8 @@ Git es un sistema de versionado de código distribuido: tanto el repositorio loc
 
 Para los que no estén familiarizados con Git, o deseen realizar un repaso del mismo, pueden seguir este [excelente tutorial](https://try.github.io/levels/1/challenges/1).
 
+También pueden utilizar un [cliente gráfico para Git](https://git-scm.com/downloads/guis/), si no desean utilizar la línea de comandos.
+
 ## Sistema Operativo _xv6_
 En varios de los Laboratorios vamos a ver la implementación de varios conceptos de la teoría en el sistema operativo _xv6_. Este sistema fue diseñado para la enseñanza en el MIT, esta escrito en C, tiene soporte para multiprocesadores y su diseño sigue la filosofía y estructura de un sistema operativo de tipo Unix.
 
