@@ -6,8 +6,8 @@
 
 int main(int argc, char* argv[])
 {
-    if (argc < 2) {
-        fprintf(stderr, "Uso: %s sem_name\n", argv[0]);
+    if (argc < 3) {
+        fprintf(stderr, "Uso: %s name value\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 

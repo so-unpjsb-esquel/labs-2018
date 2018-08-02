@@ -8,7 +8,15 @@ El programa `glob.c`, crea dos hilos que repetidamente incrementan la variable g
 * Evitar la condición de carrera mediante un semáforo (`sem_t`) en lugar del mutex.
 
 ## Ejercicio 2
-Completar los programas `sem_open.c`, `sem_wait.c`, `sem_post.c` y `sem_unlink.c`. Ejecutar el _script_ `test_sem.sh` para probar que los programas funcionan correctamente.
+Completar los programas `sem_open.c`, `sem_wait.c`, `sem_post.c` y `sem_unlink.c`. 
+
+Tendrían que poder ejecutar esta serie de comandos, en donde se crea un semáforo con un valor inicial de cero, y se realiza una operación _down_, luego un _up_, y finalmente se lo elimina.
+```
+$ sem_open semaforo 0
+$ sem_wait semaforo &
+$ sem_post semaforo
+$ sem_unlink semaforo
+```
 
 ## Ejercicio 3
 El programa `buf.c` implementa un ejemplo del problema del productor-consumidor, haciendo uso de un búfer limitado. El programa no es correcto, ya que no utiliza mecanismos de sincronización. Esto puede ocasionar problemas, por ejemplo una condición de carrera. Modificar el programa para sincronizar el acceso al recurso compartido (el _buffer_) por parte de los hilos productor y consumidor, empleando semáforos y mutexes.
