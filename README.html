@@ -74,11 +74,13 @@ $
 <p>Luego, para realizar el <em>commit</em>, ejecutan <code>git commit</code>, indicando con el parámetro <code>-m</code> una descripción de las modificaciones:</p>
 <pre><code>git commit -m &quot;Ejercicio 1 completo.&quot;
 </code></pre>
-<p>Luego para sincronizar el repositorio remoto en GitHub con el de su computadora, subiendo las modificaciones realzadas, utilizan el comando <code>git push</code> de esta manera:</p>
+<p>Luego para sincronizar el repositorio remoto en GitHub con el de su computadora, subiendo las modificaciones realizadas, utilizan el comando <code>git push</code> de esta manera:</p>
 <pre><code>git push origin master
 </code></pre>
 <p>Es importante remarcar que no necesitan sincronizar (osea, hacer un &quot;push&quot;) luego de cada <em>commit</em>. Pueden realizar varios <em>commits</em> en su repositorio local, y cuando lo consideren conveniente, &quot;subir&quot; los cambios al repositorio en GitHub.</p>
 <p>Git es un sistema de versionado de código distribuido: tanto el repositorio local como el remoto en GitHub (o en otra computadora cualquiera) son &quot;pares&quot;. Por lo tanto, no existe un repositorio central en el sentido estricto de la palabra.</p>
+<p>Para los que no estén familiarizados con Git, o deseen realizar un repaso del mismo, pueden seguir este <a href="https://try.github.io/levels/1/challenges/1">excelente tutorial</a>.</p>
+<p>También pueden utilizar un <a href="https://git-scm.com/downloads/guis/">cliente gráfico para Git</a>, si no desean utilizar la línea de comandos.</p>
 <h2 id="sistema-operativo-xv6">Sistema Operativo <em>xv6</em></h2>
 <p>En varios de los Laboratorios vamos a ver la implementación de varios conceptos de la teoría en el sistema operativo <em>xv6</em>. Este sistema fue diseñado para la enseñanza en el MIT, esta escrito en C, tiene soporte para multiprocesadores y su diseño sigue la filosofía y estructura de un sistema operativo de tipo Unix.</p>
 <p>Aunque <em>xv6</em> puede ejecutarse sobre una computadora real como un sistema operativo tradicional, en los Laboratorios vamos a utilizar para flexibilidad una máquina virtual por medio del programa QEMU. Este nos va a permitir, por ejemplo, inspeccionar el estado de la memoria, seguir paso a paso la ejecución del <em>kernel</em> de sistema operativo, etc.</p>

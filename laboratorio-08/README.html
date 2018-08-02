@@ -19,12 +19,20 @@
 <body>
 <h1 id="laboratorio-8---administración-de-memoria">Laboratorio 8 - Administración de Memoria</h1>
 <h2 id="preliminares">Preliminares</h2>
-<p>Leer el Capítulo 2 &quot;Page Tables&quot; del apunte de <em>xv6</em>.</p>
+<p>Leer el apunte de práctica sobre administración de memoria en <em>xv6</em>, y el Capítulo 2 &quot;Page Tables&quot; del libro de <em>xv6</em>, para los ejercicios 2 y 3.</p>
 <h2 id="ejercicio-1">Ejercicio 1:</h2>
-<p>Write a user program that grows its address space with 1 byte by calling sbrk(1). Run the program and investigate the page table for the program before the call to sbrk and after the call to sbrk. How much space has the kernel allocated? What does the pte for the new memory contain?</p>
+<p>Realizar los ejercicios que se incluyen en el archivo <code>PracticaMemoria.pdf</code>.</p>
 <h2 id="ejercicio-2-contador-de-páginas-en-xv6">Ejercicio 2: Contador de páginas en <em>xv6</em></h2>
-<p>Agregar a <em>xv6</em> una llamada al sistema de nombre <code>pgcnt()</code> que retorne la cantidad de páginas en uso del proceso actual. El código de la llamada al sistema se encuentra en el archivo <code>sys_pgcnt_2018.c</code>. El archivo <code>pgcnt.c</code> es un programa de usuario que invoca a esta llamada al sistema.</p>
-<p>Modificar la llamada al sistema <code>pgcnt()</code>, agregando un parámetro de tipo entero (<code>int</code>) que si es cero, hace que la función retorne el número de páginas utilizadas para el espacio de direcciones de usuario, y si es 1 retorna el número de páginas utilizadas por el <em>kernel</em> del sistema operativo.</p>
+<p>Agregar a <em>xv6</em> una llamada al sistema de nombre <code>pgcnt()</code> que retorne la cantidad de páginas en uso del proceso actual. El código de la llamada al sistema se encuentra en el archivo <code>sys_pgcnt.c</code>. El archivo <code>pgcnt.c</code> es un programa de usuario que invoca a esta llamada al sistema.</p>
+<p>Modificar el programa <code>pgcnt.c</code> para acepte como argumento un número que indique la cantidad de páginas que tiene que reservar de memoria dinámicante. El programa debe imprimir primero cuantas páginas utiliza antes y despues de reservar más memoria. Por ejemplo, si se ejecuta pidiendo 5 páginas:</p>
+<pre><code>$ pgcnt 5
+6
+11
+$
+</code></pre>
+<p><em>Tip</em>: pueden usar las funciones <code>malloc()</code> o <code>sbrk()</code> para incrementar la memoria utilizada por el proceso.</p>
+<h3 id="entrega">Entrega:</h3>
+<p>Copiar en el repositorio el archivo <code>pgcnt.c</code> modificado, con el código comentado explicando las modificaciones.</p>
 <h2 id="ejercicio-3-lazy-allocation-en-xv6">Ejercicio 3: <em>Lazy allocation</em> en <em>xv6</em></h2>
 <p>Muchos programas reservan memoria que pueden no utilizar nunca, como por ejemplo, un arreglo de gran tamaño. Un sistema operativo como Windows o Linux puede retrasar la asignación de memoria a estas secciones hasta que sean requeridos para su lectura/escritura. Cuando un proceso quiere acceder a estas secciones de memoria, ocurre un <em>page fault</em> (fallo de página), y el sistema operativo carga las páginas requeridas desde disco. Una estrategia basada en este comportamiento se denomina <em>lazy allocation</em>.</p>
 <h3 id="parte-1">Parte 1</h3>
@@ -43,6 +51,8 @@
 <li>Usar <code>PGROUNDDOWN()</code> para obtener la dirección base de la página (marco).</li>
 <li>Será necesario invocar a <code>mappages()</code>, por lo que hay que eliminar la sentencia static de su declaración en el archivo <code>vm.c</code>, y agregar su prototipo en <code>trap.c</code>.</li>
 </ul>
+<h3 id="entrega-1">Entrega</h3>
+<p>Copiar en el repositorio del Laboratorio el archivo <code>trap.c</code> modificado, y un archivo de texto donde se responda las preguntas de la Parte 1 del Ejercicio.</p>
 <hr />
 <p>¡Fín del Laboratorio 8!</p>
 </body>

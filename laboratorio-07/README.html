@@ -36,6 +36,8 @@ mkdir d
 <h3 id="que-hacer">Que hacer</h3>
 <p>Registar la lista de mensajes generados, indicando que función invoco a <code>bwrite()</code>, y que tipo de bloque es el que se esta escribiendo. Por ejemplo, &quot;bloque de i-nodos&quot;, &quot;bloque de datos&quot;, etc.</p>
 <p><em>Tip</em>: una manera sencilla de obtener el nombre de la función que invoca a <code>bwrite()</code> es agregarlo como un argumento extra a la función <code>log_write()</code>, y modificando todas las invocaciones agregando el nombre de la función en cuestión.</p>
+<h3 id="entrega">Entrega</h3>
+<p>Agregar la respuesta como un archivo de texto en el repositorio del Laboratorio.</p>
 <h2 id="ejercicio-2-pantalla">Ejercicio 2: Pantalla</h2>
 <p>El archivo <code>console.c</code> implementa la funcionalidad de E/S de la terminal. La entrada se realiza desde el teclado y/o desde el puerto serial (RS232), y la salida es tanto por la pantalla y el puerto serial. La función <code>cgaputc()</code> escribe el carácter que recibe como parámetro en la memoria de video en modo texto, suponiendo un adaptador CGA. Utiliza los siguientes datos:</p>
 <ul>
@@ -51,12 +53,14 @@ mkdir d
 <li>Realiza el <em>scroll</em> (desplazamiento) de la pantalla si corresponde.</li>
 <li>Actualiza el cursor hardware con la nueva posición.</li>
 </ol>
-<h3 id="que-hacer-1">Que hacer:</h3>
+<h3 id="que-hacer-1">Que hacer</h3>
 <p>Para este ejercicio se pide:</p>
 <ul>
 <li>Modificar el archivo <code>console.c</code> para cambiar el color con que el que se imprimen los caracteres por pantalla. Probar también cambiar el color de fondo. Ver la página 34 de la sección Alphanumeric Modes en la documentación VGA (que lo hereda de CGA).</li>
 <li><em>Opcional</em>: Mantener el cursor en dos variables <code>x</code> e <code>y</code>, de manera que no se requiera recuperar el cursor hardware, y sólo se deba actualizarlo.</li>
 </ul>
+<h3 id="entrega-1">Entrega</h3>
+<p>Copiar en el repositorio del Laboratorio el archivo <code>console.c</code> modificado, con los comentarios correspondientes que indiquen brevemente las modificaciones realizadas.</p>
 <h3 id="referencias">Referencias:</h3>
 <ul>
 <li>La sección “Terminales” (página 235) del Capítulo 3 (Entrada/Salida) del libro “Sistemas Operativos - Diseño e Implementación” (Tanenbaum).</li>

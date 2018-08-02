@@ -27,7 +27,13 @@
 <li>Evitar la condición de carrera mediante un semáforo (<code>sem_t</code>) en lugar del mutex.</li>
 </ul>
 <h2 id="ejercicio-2">Ejercicio 2</h2>
-<p>Completar los programas <code>sem_open.c</code>, <code>sem_wait.c</code>, <code>sem_post.c</code> y <code>sem_unlink.c</code>. Ejecutar el <em>script</em> <code>test_sem.sh</code> para probar que los programas funcionan correctamente.</p>
+<p>Completar los programas <code>sem_open.c</code>, <code>sem_wait.c</code>, <code>sem_post.c</code> y <code>sem_unlink.c</code>.</p>
+<p>Tendrían que poder ejecutar esta serie de comandos, en donde se crea un semáforo con un valor inicial de cero, y se realiza una operación <em>down</em>, luego un <em>up</em>, y finalmente se lo elimina.</p>
+<pre><code>$ sem_open semaforo 0
+$ sem_wait semaforo &amp;
+$ sem_post semaforo
+$ sem_unlink semaforo
+</code></pre>
 <h2 id="ejercicio-3">Ejercicio 3</h2>
 <p>El programa <code>buf.c</code> implementa un ejemplo del problema del productor-consumidor, haciendo uso de un búfer limitado. El programa no es correcto, ya que no utiliza mecanismos de sincronización. Esto puede ocasionar problemas, por ejemplo una condición de carrera. Modificar el programa para sincronizar el acceso al recurso compartido (el <em>buffer</em>) por parte de los hilos productor y consumidor, empleando semáforos y mutexes.</p>
 <h2 id="ejercicio-4">Ejercicio 4</h2>
